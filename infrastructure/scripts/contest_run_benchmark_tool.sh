@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # switch to environment JVM as needed
-JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64
 #JAVA_HOME=/usr
-JAVAC_CMD=$JAVA_HOME/bin/javac
+JAVAC_CMD="$JAVA_HOME/bin/javac -encoding UTF-8"
 JAVA_CMD=$JAVA_HOME/bin/java
 
 # Contest tool
@@ -11,7 +11,7 @@ TOOL_HOME=/usr/local/bin
 JAR=$TOOL_HOME/lib/benchmarktool-shaded.jar
 # dependencies
 JUNIT_JAR=$TOOL_HOME/lib/junit.jar
-JUNIT_DEP_JAR=$TOOL_HOME/lib/hamcrest-core.jar
+JUNIT_DEP_JAR=$TOOL_HOME/lib/hamcrest-core.jar:$TOOL_HOME/lib/mockito-core-4.11.0.jar
 PITEST_JAR=$TOOL_HOME/lib/pitest.jar:$TOOL_HOME/lib/pitest-command-line.jar
 JACOCO_JAR=$TOOL_HOME/lib/jacocoagent.jar
 

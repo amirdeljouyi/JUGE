@@ -20,20 +20,20 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <!-- Dependencies version management -->
         <ant.version>1.9.2</ant.version>
         <commons-io.version>2.4</commons-io.version>
         <commons-configuration.version>1.9</commons-configuration.version>
         <commons-exec.version>1.1</commons-exec.version>
         <org.jacoco.version>0.8.5</org.jacoco.version>
-        <pitest.version>1.1.11</pitest.version>
+        <pitest.version>1.15.2</pitest.version>
         <!-- Plugins version management -->
         <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
-        <maven-shade-plugin.version>3.2.0</maven-shade-plugin.version>
+        <maven-shade-plugin.version>3.5.0</maven-shade-plugin.version>
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
     </properties>
 
@@ -68,6 +68,11 @@
             <dependency>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest</artifactId>
+                <version>${pitest.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-entry</artifactId>
                 <version>${pitest.version}</version>
             </dependency>
             <dependency>

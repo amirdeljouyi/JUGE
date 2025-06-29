@@ -3,13 +3,13 @@
 
 FROM ubuntu:20.04
 RUN apt-get update
-RUN apt-get install -y openjdk-8-jdk
+RUN apt-get install -y openjdk-11-jdk
 RUN apt-get install -y unzip
 RUN apt-get install -y vim
 
 # SMT Solver 
-RUN apt-get install -y cvc4
-
+RUN apt-get update && \
+    apt-get install -y cvc5 || echo "⚠️  cvc5 not available in apt — install manually if needed"
 # Copy the utility scripts to run the infrastructure
 COPY infrastructure/scripts/ /usr/local/bin/
 
@@ -21,9 +21,11 @@ RUN Rscript /usr/local/bin/get-libraries.R
 # Copy dependencies
 RUN mkdir -p /usr/local/bin/lib/
 COPY infrastructure/lib/junit-4.12.jar /usr/local/bin/lib/junit.jar
+COPY infrastructure/lib/mockito-core-4.11.0.jar /usr/local/bin/lib/mockito-core-4.11.0.jar
 COPY infrastructure/lib/hamcrest-core-1.3.jar /usr/local/bin/lib/hamcrest-core.jar
-COPY infrastructure/lib/pitest-1.1.11.jar /usr/local/bin/lib/pitest.jar
-COPY infrastructure/lib/pitest-command-line-1.1.11.jar /usr/local/bin/lib/pitest-command-line.jar
+COPY infrastructure/lib/pitest-1.15.2.jar /usr/local/bin/lib/pitest.jar
+COPY infrastructure/lib/pitest-command-line-1.15.2.jar /usr/local/bin/lib/pitest-command-line.jar
+COPY infrastructure/lib/pitest-entry-1.15.2.jar /usr/local/bin/lib/pitest-entry.jar
 COPY infrastructure/lib/jacocoagent.jar /usr/local/bin/lib/jacocoagent.jar
 
 # Copy the last version of the benchmarktool utilities

@@ -471,7 +471,11 @@ public class TestSuite {
                     .and(getTestCaseBinDir(testCaseDir).getAbsolutePath())
                     .build();
 
+            Main.info("CP is: " + cp);
+
             List<String> testClasses = getTestSrcFiles(testCaseDir);
+            Main.info("TestClass is: " + testClasses);
+
 
             List<String> fixedTestClasses = new ArrayList<String>();
             for (int index = 0; index < testClasses.size(); index++) {
@@ -486,12 +490,15 @@ public class TestSuite {
                 }
             }
 
+
+            Main.info("fixedTestClasses is: " + fixedTestClasses);
+
 //			Main.debug("Running tests against generated Mutants");
 //			Main.debug("Running PITWrapper with the following data:");
 //			Main.debug("> CP = "+cp);
 //			Main.debug("> CUT = "+cut);
 //			Main.debug("> Test cases = "+fixedTestClasses);
-            PITWrapper wrapper = new PITWrapper(cp, cut, fixedTestClasses);
+            PITWrapper wrapper = new PITWrapper(cp, cut, fixedTestClasses, getTask().getSourceDirectory().getAbsolutePath());
 
             // prepare the mutant evaluator
             MutationsEvaluator evaluator = new MutationsEvaluator(cp, cut, fixedTestClasses, this.flakyTests);

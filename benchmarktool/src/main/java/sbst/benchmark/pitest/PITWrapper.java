@@ -3,7 +3,7 @@ package sbst.benchmark.pitest;
 import org.pitest.classinfo.ClassByteArraySource;
 import org.pitest.classinfo.ClassName;
 import org.pitest.classpath.ClassloaderByteArraySource;
-import org.pitest.functional.prelude.Prelude;
+import org.pitest.mutationtest.EngineArguments;
 import org.pitest.mutationtest.commandline.OptionsParser;
 import org.pitest.mutationtest.commandline.ParseResult;
 import org.pitest.mutationtest.commandline.PluginFilter;
@@ -45,7 +45,7 @@ public class PITWrapper {
      * @param pClassToMutate Class Under Test (i.e., to mutate) including packages names
      * @param pTargetTest    generate tests to execute against the mutations
      */
-    public PITWrapper(String pClassPath, String pClassToMutate, List<String> pTargetTest) {
+    public PITWrapper(String pClassPath, String pClassToMutate, List<String> pTargetTest, String pSource) {
         // convert the list of tests in the right format required by PIT
         // This is expressed as a comma separated list of string (test names)
         String testList = pTargetTest.get(0);
@@ -55,25 +55,28 @@ public class PITWrapper {
 
         // create the arguments for PIT's option parser
         String[] args4Pit = {
-                "--classPath",
-                pClassPath,
-                "--targetClasses",
-                pClassToMutate,
-                "--targetTests",
-                testList};
+                "--classPath", pClassPath,
+                "--targetClasses", pClassToMutate,
+                "--targetTests", testList,
+                "--reportDir", "pit-reports",
+                "--sourceDirs", pSource
+        };
 
-        PluginServices plugins = new PluginServices(this.getClass().getClassLoader());
+        PluginServices plugins = PluginServices.makeForLoader(this.getClass().getClassLoader());
         OptionsParser parser = new OptionsParser(new PluginFilter(plugins));
         ParseResult pr = parser.parse(args4Pit);
+
+        if (!pr.isOk()) {
+            throw new RuntimeException("Failed to parse PIT options: " + pr.getErrorMessage().get());
+        }
+
         ReportOptions options = pr.getOptions(); // get the options for PIT
 
         // Call the mutant generation engine from PIT
         GregorEngineFactory fact = new GregorEngineFactory();
-        MutationEngine engine = fact.createEngine(options.isMutateStaticInitializers(),
-                Prelude.or(options.getExcludedMethods()),
-                options.getLoggingClasses(),
-                options.getMutators(),
-                options.isDetectInlinedCode());
+        EngineArguments engineArgs = new EngineArguments(options.getMutators(), options.getExcludedMethods());
+
+        MutationEngine engine = fact.createEngine(engineArgs);
 
         try {
             // load required classes at runtime
@@ -84,7 +87,7 @@ public class PITWrapper {
             ClassByteArraySource byteSource = new ClassloaderByteArraySource(cl);
             Mutater mutater = engine.createMutator(byteSource);
 
-            ClassName classToMutate = new ClassName(pClassToMutate);
+            ClassName classToMutate = ClassName.fromString(pClassToMutate);
 
             // generate all possible mutants for the class under test
             List<MutationDetails> list = mutater.findMutations(classToMutate);

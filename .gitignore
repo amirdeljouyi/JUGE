@@ -13,6 +13,7 @@
 
 # Maven
 target/
+tools/*/results_*/
 
 # OS generated files #
 .DS_Store
