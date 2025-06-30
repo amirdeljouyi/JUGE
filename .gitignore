@@ -27,3 +27,11 @@ Thumbs.db
 # Generated website
 _site/
 Gemfile.lock
+
+tools/*/error_*_log.txt
+tools/*/stat_*_log.txt
+tools/*/error_log.txt
+tools/*/log.txt
+tools/*/stat_log.txt
+tools/*/log_detailed.txt
+tools/*/transcript.csv
