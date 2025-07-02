@@ -275,30 +275,6 @@ CoreNLP-23=
     /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
   )
 }
-CoreNLP-24=
-{
-  src=/var/benchmarks/projects/CoreNLP/src
-  bin=/var/benchmarks/projects/CoreNLP/target/classes
-  classes=(
-    edu.stanford.nlp.pipeline.CorefAnnotator
-  )
-
-  classpath=(
-    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
-  )
-}
-CoreNLP-25=
-{
-  src=/var/benchmarks/projects/CoreNLP/src
-  bin=/var/benchmarks/projects/CoreNLP/target/classes
-  classes=(
-    edu.stanford.nlp.pipeline.CorefMentionAnnotator
-  )
-
-  classpath=(
-    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
-  )
-}
 CoreNLP-26=
 {
   src=/var/benchmarks/projects/CoreNLP/src
@@ -329,42 +305,6 @@ CoreNLP-28=
   bin=/var/benchmarks/projects/CoreNLP/target/classes
   classes=(
     edu.stanford.nlp.pipeline.ArabicSegmenterAnnotator
-  )
-
-  classpath=(
-    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
-  )
-}
-CoreNLP-29=
-{
-  src=/var/benchmarks/projects/CoreNLP/src
-  bin=/var/benchmarks/projects/CoreNLP/target/classes
-  classes=(
-    edu.stanford.nlp.pipeline.ChineseSegmenterAnnotator
-  )
-
-  classpath=(
-    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
-  )
-}
-CoreNLP-30=
-{
-  src=/var/benchmarks/projects/CoreNLP/src
-  bin=/var/benchmarks/projects/CoreNLP/target/classes
-  classes=(
-    edu.stanford.nlp.pipeline.LabeledChunkIdentifier
-  )
-
-  classpath=(
-    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
-  )
-}
-CoreNLP-31=
-{
-  src=/var/benchmarks/projects/CoreNLP/src
-  bin=/var/benchmarks/projects/CoreNLP/target/classes
-  classes=(
-    edu.stanford.nlp.pipeline.JSONOutputter
   )
 
   classpath=(
@@ -419,18 +359,6 @@ CoreNLP-35=
     /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
   )
 }
-CoreNLP-36=
-{
-  src=/var/benchmarks/projects/CoreNLP/src
-  bin=/var/benchmarks/projects/CoreNLP/target/classes
-  classes=(
-    edu.stanford.nlp.parser.lexparser.EnglishTreebankParserParams
-  )
-
-  classpath=(
-    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
-  )
-}
 CoreNLP-37=
 {
   src=/var/benchmarks/projects/CoreNLP/src
@@ -449,18 +377,6 @@ CoreNLP-38=
   bin=/var/benchmarks/projects/CoreNLP/target/classes
   classes=(
     edu.stanford.nlp.parser.lexparser.LexicalizedParser
-  )
-
-  classpath=(
-    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
-  )
-}
-CoreNLP-39=
-{
-  src=/var/benchmarks/projects/CoreNLP/src
-  bin=/var/benchmarks/projects/CoreNLP/target/classes
-  classes=(
-    edu.stanford.nlp.parser.lexparser.ExhaustivePCFGParser
   )
 
   classpath=(
@@ -521,18 +437,6 @@ CoreNLP-44=
   bin=/var/benchmarks/projects/CoreNLP/target/classes
   classes=(
     edu.stanford.nlp.ie.NERFeatureFactory
-  )
-
-  classpath=(
-    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
-  )
-}
-CoreNLP-45=
-{
-  src=/var/benchmarks/projects/CoreNLP/src
-  bin=/var/benchmarks/projects/CoreNLP/target/classes
-  classes=(
-    edu.stanford.nlp.sentiment.SentimentModel
   )
 
   classpath=(
