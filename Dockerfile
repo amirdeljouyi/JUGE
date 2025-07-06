@@ -34,7 +34,15 @@ COPY benchmarktool/target/benchmarktool-1.0.0-shaded.jar /usr/local/bin/lib/benc
 # Copy the projects and configuration file to run the tools on a set of CUTs
 RUN mkdir /var/benchmarks
 COPY infrastructure/benchmarks/ /var/benchmarks/
-RUN for f in /var/benchmarks/projects/*.zip; do unzip $f -d /var/benchmarks/projects/; done;
+RUN for f in /var/benchmarks/projects/*.zip; do \
+    dirname=$(basename "$f" .zip); \
+    mkdir -p "/var/benchmarks/projects/$dirname"; \
+    unzip "$f" -d "/var/benchmarks/projects/$dirname"; \
+done
 RUN rm -f /var/benchmarks/projects/*.zip
 RUN rm -f /var/benchmarks/projects/*_split.z*
+
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+#ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64
+
 

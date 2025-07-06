@@ -48,3 +48,5 @@ RUN for f in /var/benchmarks/projects/*.zip /var/benchmarks/projects/*_combined.
 RUN rm -f /var/benchmarks/projects/*.zip
 RUN rm -f /var/benchmarks/projects/*_split.z*
 
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+#ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-arm64
