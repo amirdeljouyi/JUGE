@@ -14,6 +14,9 @@
 # Maven
 target/
 tools/*/results_*/
+tools/*/java8_*/
+tools/*/java11_*/
+tools/*/java17_*/
 
 # OS generated files #
 .DS_Store

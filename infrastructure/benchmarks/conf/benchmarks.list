@@ -275,6 +275,30 @@ CoreNLP-23=
     /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
   )
 }
+CoreNLP-24=
+{
+  src=/var/benchmarks/projects/CoreNLP/src
+  bin=/var/benchmarks/projects/CoreNLP/target/classes
+  classes=(
+    edu.stanford.nlp.pipeline.CleanXmlAnnotator
+  )
+
+  classpath=(
+    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
+  )
+}
+CoreNLP-25=
+{
+  src=/var/benchmarks/projects/CoreNLP/src
+  bin=/var/benchmarks/projects/CoreNLP/target/classes
+  classes=(
+    edu.stanford.nlp.pipeline.WordsToSentencesAnnotator
+  )
+
+  classpath=(
+    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
+  )
+}
 CoreNLP-26=
 {
   src=/var/benchmarks/projects/CoreNLP/src
@@ -305,6 +329,18 @@ CoreNLP-28=
   bin=/var/benchmarks/projects/CoreNLP/target/classes
   classes=(
     edu.stanford.nlp.pipeline.ArabicSegmenterAnnotator
+  )
+
+  classpath=(
+    /var/benchmarks/projects/CoreNLP/target/classes,/var/benchmarks/projects/CoreNLP/target/stanford-corenlp-4.5.7.jar,/var/benchmarks/projects/CoreNLP/target/ejml-simple-0.39.jar
+  )
+}
+CoreNLP-29=
+{
+  src=/var/benchmarks/projects/CoreNLP/src
+  bin=/var/benchmarks/projects/CoreNLP/target/classes
+  classes=(
+    edu.stanford.nlp.pipeline.SentenceAnnotator
   )
 
   classpath=(
