@@ -35,16 +35,11 @@ COPY benchmarktool/target/benchmarktool-1.0.0-shaded.jar /usr/local/bin/lib/benc
 RUN mkdir /var/benchmarks
 COPY infrastructure/17-benchmarks/ /var/benchmarks/
 
-# Reconstruct split zip files (e.g., Mallet_split.z01 + Mallet_split.zip)
-RUN for f in /var/benchmarks/projects/*_split.zip; do \
-      zip -FF "$f" --out "${f%.zip}_combined.zip"; \
-    done
-
-# Unzip all reconstructed archives and regular zips
-RUN for f in /var/benchmarks/projects/*.zip /var/benchmarks/projects/*_combined.zip; do \
-      unzip -q "$f" -d /var/benchmarks/projects/; \
-    done
-
+RUN for f in /var/benchmarks/projects/*.zip; do \
+    dirname=$(basename "$f" .zip); \
+    mkdir -p "/var/benchmarks/projects/$dirname"; \
+    unzip "$f" -d "/var/benchmarks/projects/$dirname"; \
+done
 RUN rm -f /var/benchmarks/projects/*.zip
 RUN rm -f /var/benchmarks/projects/*_split.z*
 
