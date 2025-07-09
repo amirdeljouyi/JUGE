@@ -3,22 +3,20 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install Java 8, unzip, vim, R dependencies, and attempt cvc5 installation
+RUN apt-get update
+RUN apt-get install -y openjdk-11-jdk
+RUN apt-get install -y unzip
+RUN apt-get install -y vim
+
+# SMT Solver
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        openjdk-8-jdk \
-        unzip \
-        vim \
-        libgmp-dev \
-        libmpfr-dev \
-        r-base && \
-    apt-get install -y cvc5 || echo "⚠️  cvc5 not available in apt — install manually if needed" && \
-    rm -rf /var/lib/apt/lists/*
-
-# Set JAVA_HOME explicitly
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-
-# Copy and execute utility scripts (including R dependencies)
+    apt-get install -y cvc5 || echo "⚠️  cvc5 not available in apt — install manually if needed"
+# Copy the utility scripts to run the infrastructure
 COPY infrastructure/scripts/ /usr/local/bin/
+
+# [R](https://www.r-project.org)
+RUN apt-get install -y libgmp-dev libmpfr-dev
+RUN apt-get install -y r-base
 RUN Rscript /usr/local/bin/get-libraries.R
 
 # Create JAR lib directory and copy dependencies
