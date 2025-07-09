@@ -1,5 +1,5 @@
 TOOL=$1
-FOLDER="results_$2"
+FOLDER="$2"
 
 cd ${TOOL}/${FOLDER}
 
